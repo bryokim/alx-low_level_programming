@@ -16,16 +16,16 @@ void print_times_table(int n)
 
 	if (n >= 0 && n <= 15)
 	{
-		for (i = 0 ; i < n ; i++)
+		for (i = 0 ; i <= n ; i++)
 		{
-			for (j = 0; j < n ; j++)
+			for (j = 0; j <= n ; j++)
 			{
 				if (j == 0)
 					printf("%d,", j);
-				else if (j < (n - 1))
-					printf("%3d,", i * j);
+				else if (j < n)
+					printf("%4d,", i * j);
 				else
-					printf("%3d", i * j);
+					printf("%4d\n", i * j);
 			}
 		}
 	}

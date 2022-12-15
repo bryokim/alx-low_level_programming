@@ -6,9 +6,9 @@
  * Description: prints the sum of all the
  * multiples if 3 and 5 below 1024
  *
- * Return: void
+ * Return: Always 0
  */
-void main(void)
+int main(void)
 {
 	int i, sum = 0;
 
@@ -18,4 +18,5 @@ void main(void)
 			sum += i;
 	}
 	printf("%d\n", sum);
+	return (0);
 }

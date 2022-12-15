@@ -7,9 +7,9 @@
  * Fibonacci numbers starting with
  * 1 and 2
  *
- * Return: void
+ * Return: Always 0
  */
-void main(void)
+int main(void)
 {
 	long i, c, a = 0, b = 1;
 
@@ -24,4 +24,5 @@ void main(void)
 		b = c;
 	}
 	putchar('\n');
+	return (0);
 }

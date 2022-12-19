@@ -11,9 +11,10 @@
  */
 int _atoi(char *s)
 {
-	int i, num;
+	unsigned int i, num, count;
 
 	num = 0;
+	count = 0;
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (isdigit(s[i]))
@@ -21,20 +22,26 @@ int _atoi(char *s)
 			num = num * 10 + s[i] - '0';
 			while (isdigit(s[++i]))
 				num = num * 10 + s[i] - '0';
-
-			return (num);
+			if (count % 2 == 0)
+				return (num);
+			else
+				return (-num);
 		}
 		else if (s[i] == '-')
 		{
+			count++;
 			while (s[++i] == '-')
-				;
-
+				count++;
 			if (isdigit(s[i]))
 			{
 				num = num * 10 + s[i] - '0';
 				while (isdigit(s[++i]))
 					num = num * 10 + s[i] - '0';
-				return (-num);
+
+				if (count % 2 == 0)
+					return (num);
+				else
+					return (-num);
 			}
 			else if (s[i] == '\0')
 			{

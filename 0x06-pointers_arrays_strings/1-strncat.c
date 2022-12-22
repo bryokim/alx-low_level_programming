@@ -2,12 +2,13 @@
  * _strncat - concatenates two strings
  * @dest: string to be added to
  * @src: string to be appended to dest
+ * @n: number of bytes to be appended
  *
  * Description: appends at most n bytes from source to dest
  *
  * Return: pointer to dest
  */
-char *_strncat(char *dest, char *src)
+char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
 

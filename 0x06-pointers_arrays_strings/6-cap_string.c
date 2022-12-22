@@ -13,12 +13,15 @@ char *cap_string(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
+		if (s[0] >= 'a' && s[0] <= 'z')
+			s[0] = s[0] - 'a' + 'z';
+
 		switch (s[i])
 		{
 			case ' ': case '\t': case '\n': case ',': case ';':
 			case '.': case '!': case '?': case '"': case '(':
 			case ')': case '{': case '}':
-				if (s[i + 1] >= 'a' && s[i +1] <= 'z')
+				if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
 					s[i + 1] = s[i + 1] - 'a' + 'A';
 			default:
 				continue;

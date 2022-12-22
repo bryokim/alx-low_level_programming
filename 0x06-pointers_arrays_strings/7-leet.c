@@ -14,7 +14,7 @@ char *leet(char *s)
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		c = s[i] - 'a' + 'A';
-		if ( c == 'A' || c == 'E' || c == 'L' || c == 'O' || c == 'T')
+		if (c == 'A' || c == 'E' || c == 'L' || c == 'O' || c == 'T')
 		{
 			for (j = 0; a[j] != c; j++)
 				;
@@ -22,3 +22,4 @@ char *leet(char *s)
 		}
 	}
 	return (s);
+}

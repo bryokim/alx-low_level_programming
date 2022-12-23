@@ -13,7 +13,11 @@ char *leet(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		c = s[i] - 'a' + 'A';
+		if (s[i] >= 'a' && s[i] <= 'z')
+			c = s[i] - 'a' + 'A';
+		else
+			c = s[i];
+
 		if (c == 'A' || c == 'E' || c == 'L' || c == 'O' || c == 'T')
 		{
 			for (j = 0; a[j] != c; j++)

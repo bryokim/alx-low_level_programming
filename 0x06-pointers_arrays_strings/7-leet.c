@@ -1,3 +1,5 @@
+#include <ctype.h>
+
 /**
  * leet - encodes a string into 1337
  * @s: string to be encoded
@@ -13,11 +15,7 @@ char *leet(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (s[i] >= 'a' && s[i] <= 'z')
-			c = s[i] - 'a' + 'A';
-		else
-			c = s[i];
-
+		c = toupper(s[i]);
 		if (c == 'A' || c == 'E' || c == 'L' || c == 'O' || c == 'T')
 		{
 			for (j = 0; a[j] != c; j++)

@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _strspn - find number of bytes in the initial segment of s
  * which consist only of bytes from accept
@@ -11,19 +9,23 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int i, j, count;
+	unsigned int count;
+	char *s1;
 
-	i = 0;
-	while (accept[i])
+	for (count = 0; *s != '\0'; s++)
 	{
-		j = 0;
-		while (s[j] != ' ')
+		for (s1 = accept; ; s1++)
 		{
-			if (accept[i] == s[j])
+			if (*s == *s1)
+			{
 				count++;
-			j++;
+				break;
+			}
+			else if (*(s1 + 1) == '\0')
+			{
+				return (count);
+			}
 		}
-		i++;
 	}
 	return (count);
 }

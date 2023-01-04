@@ -10,14 +10,23 @@
  */
 void print_diagsums(int *a, int size)
 {
-	unsigned int i, x, z;
+	int i, pre, max;
+	unsigned int sum1, sum2;
 
-	x = 0;
-	z = 0;
-	for (i = 0; i < size; i++)
+	max = size * size;
+	sum1 = sum2 = pre = 0;
+
+	for (i = 0; i < max; i++)
 	{
-		x += a[i][size * i + 1];
-		z += a[i][size * (i + 1) - (i + 1)];
+		if (i == (pre + size + 1) || i == 0)
+		{
+			sum1 += *(a + i);
+			pre = i;
+		}
+		if ((i % (size - 1) == 0) && i != (max - 1) && i != 0)
+		{
+			sum2 += *(a + i);
+		}
 	}
-	printf("%d, %d\n", x, z);
+	printf("%u, %u\n", sum1, sum2);
 }

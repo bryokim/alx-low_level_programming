@@ -11,12 +11,19 @@
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	char *s1;
+	int i, j, count;
 
-	for (s1 = s; *s1 != '\0' ; s1++)
+	i = 0;
+	while (accept[i])
 	{
-		if (_strchr(s2, *s1) == NULL)
-			return (s1 - s);
+		j = 0;
+		while (s[j] != ' ')
+		{
+			if (accept[a] == s[j])
+				count++;
+			j++;
+		}
+		i++;
 	}
-	return (s1 - s);
+	return (count);
 }

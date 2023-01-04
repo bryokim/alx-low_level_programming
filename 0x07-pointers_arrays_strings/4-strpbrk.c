@@ -8,14 +8,24 @@
  * Return: pointer to the byte in s that matches one of the bytes in
  * accept, or NULL if no such bytes is found
  */
-char *_strbrk(char *s, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
-	char s1;
+	int i, j;
 
-	for (s1 = s; *s1 != '\0'; s1++)
+	i = 0;
+	while (s[i])
 	{
-		if (_strchr(accept, *s1) != NULL)
-			return ((char *) s1);
+		j = 0;
+		while (accept[j])
+		{
+			if (s[a] == accept[b])
+			{
+				s += a;
+				return (s);
+			}
+			j++;
+		}
+		i++;
 	}
 	return (NULL);
 }

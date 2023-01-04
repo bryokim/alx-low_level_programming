@@ -6,21 +6,26 @@
  * @haystack: string
  * @needle: substring
  *
- * Return: pointer to the beggeining of the located substring
+ * Return: pointer to the beggining of the located substring
  * or NULL if the substring is not found
  */
 char *_strstr(char *haystack, char *needle)
 {
-	size_t needlelen;
+	int i, j;
 
-	if (*needle == '\0')
-		return ((char *) haystack);
-	needlelen = strlen(needle);
-
-	for ( ; (haystack = strchr(haystack, *needle)) != NULL; haystack++)
+	i = 0;
+	while (haystack[i])
 	{
-		if (memcmp(haystack, needle, needlelen) == 0)
-			return ((char *) haystack);
+		j = 0;
+		while (needle[j])
+		{
+			if (haystack[i + j] != needle[j])
+				break;
+			j++;
+		}
+		if (needle[j] == '\0')
+			return (haystack + i);
+		i++;
 	}
 	return (NULL);
 }

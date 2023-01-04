@@ -19,7 +19,7 @@ unsigned int _strspn(char *s, char *accept)
 		j = 0;
 		while (s[j] != ' ')
 		{
-			if (accept[a] == s[j])
+			if (accept[i] == s[j])
 				count++;
 			j++;
 		}

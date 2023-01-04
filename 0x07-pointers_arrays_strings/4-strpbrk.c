@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _strbrk - locates the first occurrence in the string s
+ * _strpbrk - locates the first occurrence in the string s
  * of any of the bytes in the string accept
  * @s: string
  * @accept: string
@@ -10,7 +10,7 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
-	int i, j;
+	unsigned int i, j;
 
 	i = 0;
 	while (s[i])

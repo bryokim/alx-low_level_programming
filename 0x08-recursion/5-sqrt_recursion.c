@@ -23,15 +23,11 @@ int _sqrt_recursion(int n)
  */
 int find_sqrt(int n, int i)
 {
+	if ((i * i) == n)
+		return (i);
+
 	if (i <= (n / 2))
-	{
-		if (i == n)
-			return (1);
-
-		if ((n % i) == 0)
-			return (0);
-
 		return (find_sqrt(n, i + 1));
-	}
-	return (1);
+
+	return (-1);
 }

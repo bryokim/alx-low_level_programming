@@ -10,7 +10,7 @@
  * Return: 0 if there are no errors
  * 1 if number of arguments exceeds 2 ie. program name and amount
  */
-int main(int argc, char *argv)
+int main(int argc, char *argv[])
 {
 	int find_change(int amount);
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv)
 		if (amount < 0)
 			printf("0\n");
 		else
-			find_change(amount);
+			printf("%d\n", find_change(amount));
 
 		return (0);
 	}

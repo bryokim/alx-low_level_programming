@@ -1,2 +1,3 @@
 #!/bin/bash
-ar rc liball.a `gcc -c *.c | find . -name "*.o"` && rm *.o
+gcc -Wall -pedantic -Werror -Wextra -c *.c
+ar rc liball.a *.o

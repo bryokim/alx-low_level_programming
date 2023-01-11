@@ -20,7 +20,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 
 	sum = char_count(ac, av);
-	str = malloc((sizeof(char) * sum) + ac);
+	str = malloc((sizeof(char) * sum) + ac + 1);
 	if (!str)
 		return (NULL);
 
@@ -31,6 +31,7 @@ char *argstostr(int ac, char **av)
 			str[k++] = av[i][j];
 		str[k++] = '\n';
 	}
+	str[k] = '\0';
 	return (str);
 }
 

@@ -9,3 +9,5 @@
 4-free_grid.c - frees a 2 dimensional grid previously created by your alloc_grid function.
 
 100-argstostr.c - concatenates all the arguments of your program.
+
+101-strtow - splits a string into words.

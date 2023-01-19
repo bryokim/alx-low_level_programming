@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * main - prints opcodes for main
+ * @argc: argument count
+ * @argv: argument vector
+ *
+ * Return: Always 0
+ */
 int main(int argc, char *argv[])
 {
 	int i;

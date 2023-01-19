@@ -40,16 +40,19 @@ Where `num1` and `num2` are integers and `operator` is one of the following:
 ```
 Prints the result of the operation followed by a new line.
 
-### 3-main.c
+#### 3-main.c
 Contains the main function.
 
-### 3-calc.h
+#### 3-calc.h
 Contains all the function prototypes and data structures used by
 the program calc.
 
-### 3-op_functions.c
+#### 3-op_functions.c
 Contains the 5 functions for performing the operations named above.
 
-### 3-get_op_func.c
+#### 3-get_op_func.c
 Contains the function that selects the correct function to perform operation
 asked by the user.
+
+## 100-main_opcodes.c
+Prints the opcodes of its own main function in hexadecimal.

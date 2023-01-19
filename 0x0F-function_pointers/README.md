@@ -31,13 +31,13 @@ gcc -Wall -Wextra -Werror -pedantic -std=gnu89 -o calc 3-main.c 3-op_functions.c
 ```
 Usage: ```calc num1 operator num2```.
 Where `num1` and `num2` are integers and `operator` is one of the following:
-```
+
 * `+`: Addition
 * `-`: Subtraction
 * `*`: Multiplication
 * `/`: Division
 * `%`: Modulo
-```
+
 Prints the result of the operation followed by a new line.
 
 #### 3-main.c

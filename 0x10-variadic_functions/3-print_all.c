@@ -18,7 +18,7 @@ void print_all(const char * const format, ...)
 	va_start(ap, format);
 
 	i = 0;
-	while (i < strlen(format))
+	while (format && i < strlen(format))
 	{
 		j = print(format[i], ap);
 
@@ -57,11 +57,9 @@ int print(char t, va_list ap)
 	case 's':
 		s = va_arg(ap, char *);
 		if (s)
-		{
 			printf("%s", s);
-			return (1);
-		}
-		printf("(nil)");
+		else
+			printf("(nil)");
 		return (1);
 	default:
 		return (0);

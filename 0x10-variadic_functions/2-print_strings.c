@@ -26,24 +26,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	while (--i >= 0)
 	{
 		s = va_arg(ap, char *);
-		if (separator && i != 0)
-		{
-			if (s)
-				printf("%s%s", s, separator);
-			else
-				printf("(nil)%s", separator);
-		}
-		else if (!separator && i != 0)
-		{
-			if (s)
-				printf("%s", s);
-			else
-				printf("(nil)");
-		}
+		if (s)
+			printf("%s", s);
+		else
+			printf("(nil)");
 
-		if (i == 0 && s)
-			printf("%s\n", s);
-		else if (i == 0 && !s)
-			printf("(nil)\n");
+		if (separator && i != 0)
+			printf("%s", separator);
 	}
+	printf("\n");
+	va_end(ap);
 }

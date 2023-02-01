@@ -7,7 +7,7 @@ Contains functions for list operations, namely:
 - `freeing a list`
 
 This directory also contains two functions for specific operations not involving lists.
-These functions are contained in the folloeing source files:
+These functions are contained in the following source files:
 - `100-first.c`
 - `101-hello_holberton.asm`
 

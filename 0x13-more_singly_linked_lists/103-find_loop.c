@@ -1,25 +1,18 @@
 #include "lists.h"
+#include <stdio.h>
 
 listint_t *find_listint_loop(listint_t *head)
 {
-        listint_t *slow_p = head;
-        listint_t *fast_p = head;
+        listint_t *current = head;
+        listint_t *fast = head;
 
-        while (slow_p && fast_p && fast_p->next)
+        while (current && fast && fast->next)
         {
-                slow_p = slow_p->next;
-                fast_p = fast_p->next->next;
+                current = current->next;
+                fast = (fast->next)->next;
 
-                if (slow_p == fast_p)
-                {
-                        slow_p = head;
-                        while (slow_p != fast_p)
-                        {
-                                slow_p = slow_p->next;
-                                fast_p = fast_p->next;
-                        }
-                        return (slow_p);
-                }
+                if (current == fast)
+                        return (current);
         }
         return (NULL);
 }

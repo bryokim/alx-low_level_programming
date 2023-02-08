@@ -10,41 +10,34 @@
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, bytes_read, bytes_written;
-	char *buf;
+	char buf[1024];
 
 	if (argc != 3)
 	{
-		dprintf(1, "%s", "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "%s", "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 
 	fd_from = open_file_from(argv[1]);
 	fd_to = open_file_to(argv[2], fd_from);
 
-	buf = malloc(1024 * sizeof(char));
-	if (!buf)
-	{
-		dprintf(1, "%s", "Error: Can't allocate memory");
-		exit_safe(buf, fd_from, fd_to, 1);
-	}
-
 	do {
 		memset(buf, 0, 1024);
 		bytes_read = read(fd_from, buf, 1024);
 		if (bytes_read == -1)
 		{
-			dprintf(1, "%s%s\n", "Error: Can't read from file ", argv[1]);
-			exit_safe(buf, fd_from, fd_to, 98);
+			dprintf(STDERR_FILENO, "%s%s\n", "Error: Can't read from file ", argv[1]);
+			exit_safe(fd_from, fd_to, 98);
 		}
 		bytes_written = write(fd_to, buf, bytes_read);
 		if (bytes_written == -1)
 		{
-			dprintf(1, "%s%s\n", "Error: Can't write to ", argv[2]);
-			exit_safe(buf, fd_from, fd_to, 99);
+			dprintf(STDERR_FILENO, "%s%s\n", "Error: Can't write to ", argv[2]);
+			exit_safe(fd_from, fd_to, 99);
 		}
 	} while (bytes_read == 1024);
 
-	exit_safe(buf, fd_from, fd_to, 0);
+	exit_safe(fd_from, fd_to, 0);
 	return (0);
 }
 
@@ -61,7 +54,7 @@ void close_fd(int fd)
 	i = close(fd);
 	if (i == -1)
 	{
-		dprintf(1, "%s%d\n", "Error: Can't close fd ", fd);
+		dprintf(STDERR_FILENO, "%s%d\n", "Error: Can't close fd ", fd);
 		exit(100);
 	}
 }
@@ -79,7 +72,7 @@ int open_file_from(char *file_from)
 	fd = open(file_from, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(1, "%s%s\n", "Error: Can't read from file ", file_from);
+		dprintf(STDERR_FILENO, "%s%s\n", "Error: Can't read from file ", file_from);
 		exit(98);
 	}
 	return (fd);
@@ -103,7 +96,7 @@ int open_file_to(char *file_to, int fd_from)
 	fd = open(file_to, flags, mode);
 	if (fd == -1)
 	{
-		dprintf(1, "%s%s\n", "Error: Can't write to ", file_to);
+		dprintf(STDERR_FILENO, "%s%s\n", "Error: Can't write to ", file_to);
 		close_fd(fd_from);
 		exit(99);
 	}
@@ -114,18 +107,14 @@ int open_file_to(char *file_to, int fd_from)
 /**
  * exit_safe - safely exit by closing all open file descriptors
  * and freeing memory of the buffer.
- * @buf: Malloc'd buffer.
  * @fd_from: File descriptor of file to copy from.
  * @fd_to: File descriptor of file to copy to.
  * @status: exit code.
  *
  * Return: Void.
 */
-void exit_safe(char *buf, int fd_from, int fd_to, int status)
+void exit_safe(int fd_from, int fd_to, int status)
 {
-	if (buf)
-		free(buf);
-
 	close_fd(fd_from);
 	close_fd(fd_to);
 	exit(status);

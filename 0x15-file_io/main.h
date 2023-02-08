@@ -17,6 +17,6 @@ int append_text_to_file(const char *filename, char *text_content);
 int open_file_from(char *file_from);
 void close_fd(int fd);
 int open_file_to(char *file_to, int fd_from);
-void exit_safe(char *buf, int fd_from, int fd_to, int status);
+void exit_safe(int fd_from, int fd_to, int status);
 
 #endif

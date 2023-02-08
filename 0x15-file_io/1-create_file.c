@@ -15,12 +15,15 @@ int create_file(const char *filename, char *text_content)
 	if (!filename)
 		return (-1);
 
-	flags = O_WRONLY | O_CREAT | O_TRUNC;
+	flags = O_CREAT | O_WRONLY | O_TRUNC;
 	mode = S_IRUSR | S_IWUSR;
 
 	fd = open(filename, flags, mode);
 	if (fd == -1)
 		return (-1);
+
+	if (!text_content)
+		text_content = "";
 
 	num = write(fd, text_content, strlen(text_content));
 	if (num == -1)

@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
 	fd_to = open_file_to(argv[2], fd_from);
 
 	do {
-		memset(buf, 0, 1024);
 		bytes_read = read(fd_from, buf, 1024);
 		if (bytes_read == -1)
 		{

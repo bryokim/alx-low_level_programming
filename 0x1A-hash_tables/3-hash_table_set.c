@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "hash_tables.h"
 
 
@@ -71,7 +72,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	int i;
 	hash_node_t *new_node;
 
-	if (strcmp(key, "") == 0 || !key || !ht || !ht->array)
+	if (!key || strcmp(key, "") == 0 || !value || !ht || !ht->array)
 		return (0);
 
 	index = key_index((unsigned char *) key, ht->size);

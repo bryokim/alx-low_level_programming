@@ -56,10 +56,7 @@ void hash_table_print(const hash_table_t *ht)
 	unsigned long int index;
 
 	if (!ht || !ht->array)
-	{
-		puts("{}");
 		return;
-	}
 
 	putchar('{');
 	for (index = 0; index < ht->size; index++)

@@ -237,6 +237,9 @@ void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *hn = ht->stail;
 
+	if (!ht)
+		return;
+
 	putchar('{');
 	while (hn)
 	{

@@ -20,19 +20,15 @@ def island_perimeter(grid):
     Returns:
         Perimeter of the island described by grid.
     """
-    perimeter = 0
+    land_cells = 0
+    common_edges = 0
 
-    # Don't loop at first and last indexes as they are all zeros since the land
-    # is an island.
-    for i, vector in enumerate(grid[1:-1], start=1):
-        for j, cell in enumerate(vector[1:-1], start=1):
+    for i, vector in enumerate(grid):
+        for j, cell in enumerate(vector):
             if cell:
-                if grid[i - 1][j] == 0:  # Check above cell.
-                    perimeter += 1
-                if grid[i + 1][j] == 0:  # Check below cell.
-                    perimeter += 1
-                if vector[j + 1] == 0:  # Check right cell.
-                    perimeter += 1
-                if vector[j - 1] == 0:  # Check left cell.
-                    perimeter += 1
-    return perimeter
+                land_cells += 1
+                if (i > 0 and grid[i - 1][j] == 1):  # Chec above cell.
+                    common_edges += 1
+                if j > 0 and vector[j - 1] == 1:  # Check left cell.
+                    common_edges += 1
+    return land_cells * 4 - common_edges * 2
